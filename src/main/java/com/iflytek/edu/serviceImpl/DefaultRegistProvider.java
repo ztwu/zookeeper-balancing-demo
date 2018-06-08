@@ -21,6 +21,7 @@ public class DefaultRegistProvider implements RegistProvider {
         String path = zookeeperRegistContext.getPath();
         ZkClient zkClient = zookeeperRegistContext.getZkClient();
         try {
+            //在zookeeper上创建临时节点，一旦这个服务端出问题异常，失去与zookeeper的心跳连接，就会自动删除掉这个临时节点
             zkClient.createEphemeral(path,zookeeperRegistContext.getData());
         }catch (ZkNoNodeException e){
             zkClient.createEphemeral(path.substring(0,path.lastIndexOf("/")),true);
@@ -33,6 +34,7 @@ public class DefaultRegistProvider implements RegistProvider {
         String path = zookeeperRegistContext.getPath();
         ZkClient zkClient = zookeeperRegistContext.getZkClient();
         try {
+            //也可以主动删除
             zkClient.deleteRecursive(path);
         }catch (ZkNoNodeException e){
             e.printStackTrace();
