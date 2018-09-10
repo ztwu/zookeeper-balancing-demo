@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ClientRunner {
 
-    private static final Integer SERVER_QTY = 3;
+    private static final Integer SERVER_QTY = 5;
     private static final String ZOOKEEPER_SERVER = "192.168.1.101:2181";
     private static final String SERVERS_APTH = "/servers";
 
